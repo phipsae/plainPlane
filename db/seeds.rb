@@ -35,5 +35,23 @@ end
   plane.user = user
   plane.plane_model = model
   plane.save
+
   puts plane.id
+end
+
+## Bookings seeds
+10.times do |f|
+  status = rand(2..4)
+  user_id = rand(1..20)
+  plane_id = rand(1..10)
+  start = ['2021-01-01', '2021-02-01', '2021-03-01', '2021-04-01', '2021-05-01', '2022-01-01', '2022-02-01', '2022-03-01', '2022-04-01', '2022-05-01']
+  end_date = ['2021-02-01', '2021-03-01', '2021-04-01', '2021-05-01', '2022-01-01', '2022-02-01', '2022-03-01', '2022-04-01', '2022-05-01', '2022-06-01']
+  plane = Plane.find(plane_id)
+  user = User.find(user_id)
+  booking = Booking.new(status: status, start_date: start[f], end_date: end_date[f])
+  booking.user = user
+  booking.plane = plane
+  booking.save
+
+  puts booking.id
 end
