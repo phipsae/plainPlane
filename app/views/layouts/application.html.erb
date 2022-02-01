@@ -13,6 +13,11 @@
   <body>
     <%= button_to "login", new_user_session_path %>
     <%= button_to "logout", destroy_user_session_path, method: :delete %>
+    <% if user_signed_in? %>
+      <%= current_user.email %>
+    <% else %>
+      <%= "not logged in" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

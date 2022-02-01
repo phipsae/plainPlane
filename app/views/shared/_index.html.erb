@@ -1,11 +1,17 @@
-<div class="cards">
 
-  <% 10.times do %>
+<% if policy(Plane).new? %>
+  <div class="btn btn-danger">
+    <%= link_to "create plane", new_plane_path %>
+  </div>
+<% end %>
+
+<div class="cards">
+  <% @planes.each do |plane| %>
     <div class="card-trip">
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
       <div class="card-trip-infos">
         <div>
-          <h2>Title here</h2>
+          <h2><%= link_to plane.name, plane_path(plane) %></h2>
           <p>Short description here!</p>
         </div>
         <h2 class="card-trip-pricing">£99.99</h2>

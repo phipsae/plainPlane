@@ -1,14 +1,18 @@
 class PlanesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
+  before_action :set_plane, only: [:show, :edit, :update, :destroy]
 
   def index
-    @planes = Plane.all
+    @planes = policy_scope(Plane)
   end
 
-  def show; end
+  def show
+    authorize @plane
+  end
 
   def new
     @plane = Plane.new
+    authorize @plane
   end
 
   def create
@@ -26,7 +30,13 @@ class PlanesController < ApplicationController
 
   def update; end
 
+  def destroy; end
+
   private
+
+  def set_plane
+    @plane = Plane.find(params[:id])
+  end
 
   def plane_params
     params.require(:plane).permit(:name, :price, :availability, :plane_model_id)
