@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
 
 ## User seeds
 10.times do
@@ -25,7 +19,7 @@ end
 end
 
 ## Plane seeds
-10.times do
+10.times do |f|
   price_cents = rand(1000000..1000000000)
   id = rand(1..10)
   model_id = rand(1..10)
@@ -34,7 +28,14 @@ end
   plane = Plane.new(price: price_cents, name: Faker::Hipster.sentence(word_count: 6), availability: true)
   plane.user = user
   plane.plane_model = model
+
   plane.save
+
+  file = URI.open('https://source.unsplash.com/collection/1491223')
+  plane_picture = Plane.new(title: "#{plane.id}", body: "#{plane.id}")
+  plane_picture.photo.attach(io: file, filename: "#{plane.id}.png", content_type: 'image/png')
+
+  # plane collection  https://source.unsplash.com/collection/1491223
 
   puts plane.id
 end
