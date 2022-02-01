@@ -4,5 +4,5 @@ class Plane < ApplicationRecord
   has_many :bookings
   has_one_attached :photo
 
-  validates :name, :availability, presence: true
+  validates :name, :availability, :price, presence: true
 end
