@@ -5,6 +5,8 @@ class PlanesController < ApplicationController
     @planes = Plane.all
   end
 
+  def show; end
+
   def new
     @plane = Plane.new
   end
@@ -19,6 +21,10 @@ class PlanesController < ApplicationController
       render :new
     end
   end
+
+  def edit; end
+
+  def update; end
 
   private
 
