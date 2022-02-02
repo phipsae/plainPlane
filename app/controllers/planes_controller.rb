@@ -1,6 +1,6 @@
 class PlanesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
-  before_action :set_planes, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_planes, only: [ :show, :edit, :update, :destroy, :deactivate ]
 
   def index
     @planes = Plane.all

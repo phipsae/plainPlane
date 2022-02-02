@@ -27,7 +27,7 @@ end
 ## Plane seeds
 10.times do
   price_cents = rand(1000000..1000000000)
-  id = rand(1..20)
+  id = rand(1..10)
   model_id = rand(1..10)
   model = PlaneModel.find(model_id)
   user = User.find(id)
@@ -42,7 +42,7 @@ end
 ## Bookings seeds
 10.times do |f|
   status = rand(2..4)
-  user_id = rand(1..20)
+  user_id = rand(1..10)
   plane_id = rand(1..10)
   start = ['2021-01-01', '2021-02-01', '2021-03-01', '2021-04-01', '2021-05-01', '2022-01-01', '2022-02-01', '2022-03-01', '2022-04-01', '2022-05-01']
   end_date = ['2021-02-01', '2021-03-01', '2021-04-01', '2021-05-01', '2022-01-01', '2022-02-01', '2022-03-01', '2022-04-01', '2022-05-01', '2022-06-01']
