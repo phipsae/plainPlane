@@ -25,13 +25,8 @@ end
 ## Plane seeds
 20.times do |f|
   price_cents = rand(1000000..1000000000)
-<<<<<<< HEAD
-  id = rand(1..10)
-  model_id = rand(1..10)
-=======
   id = rand(User.first.id..User.last.id)
   model_id = rand(PlaneModel.first.id..PlaneModel.last.id)
->>>>>>> master
   model = PlaneModel.find(model_id)
   user = User.find(id)
   plane = Plane.new(price: price_cents, name: Faker::Hipster.sentence(word_count: 6), availability: true)
@@ -53,13 +48,8 @@ end
 ## Bookings seeds
 10.times do |f|
   status = rand(2..4)
-<<<<<<< HEAD
-  user_id = rand(1..10)
-  plane_id = rand(1..10)
-=======
   user_id = rand(User.first.id..User.last.id)
   plane_id = rand(Plane.first.id..Plane.last.id)
->>>>>>> master
   start = ['2021-01-01', '2021-02-01', '2021-03-01', '2021-04-01', '2021-05-01', '2022-01-01', '2022-02-01', '2022-03-01', '2022-04-01', '2022-05-01']
   end_date = ['2021-02-01', '2021-03-01', '2021-04-01', '2021-05-01', '2022-01-01', '2022-02-01', '2022-03-01', '2022-04-01', '2022-05-01', '2022-06-01']
   plane = Plane.find(plane_id)
