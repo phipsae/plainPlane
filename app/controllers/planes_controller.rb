@@ -1,11 +1,14 @@
 class PlanesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
+  before_action :set_planes, only: [ :show, :edit, :update ]
 
   def index
     @planes = Plane.all
   end
 
-  def show; end
+  def show
+    @booking = Booking.new(plane: @plane)
+  end
 
   def new
     @plane = Plane.new
@@ -27,6 +30,10 @@ class PlanesController < ApplicationController
   def update; end
 
   private
+
+  def set_planes
+    @plane = Plane.find(params[:id])
+  end
 
   def plane_params
     params.require(:plane).permit(:name, :price, :availability, :plane_model_id)
