@@ -16,8 +16,7 @@ class PlanesController < ApplicationController
 
   def create
     @plane = Plane.new(plane_params)
-    @user = current_user
-    @plane.user = @user
+    @plane.user = current_user
     if @plane.save
       redirect_to plane_path(@plane)
     else
@@ -27,7 +26,11 @@ class PlanesController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    @plane.update(plane_params)
+
+    redirect_to plane_path(@plane)
+  end
 
   private
 
