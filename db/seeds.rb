@@ -12,7 +12,7 @@ end
 
 
 ## Plane Models seeds
-20.times do
+10.times do
   hp = rand(1000..10000)
   seats = rand(10..100)
   plane_model = PlaneModel.new(seats: seats, horsepower: hp, name: Faker::FunnyName.two_word_name)

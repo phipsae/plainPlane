@@ -1,0 +1,50 @@
+.cta {
+  border-radius: 50px;
+  height: 56px;
+  padding: 8px 24px;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+
+  &-dark {
+    background-color: #54BAB9;
+    border: 2px solid #54BAB9;
+  }
+
+    &-dark:hover {
+      background-color: transparent;
+      color:#54BAB9;
+  }
+
+  &-light {
+    background-color: none;
+    border: 2px solid #54BAB9;
+    color: #54BAB9;
+  }
+
+  &-light:hover {
+    background-color: #54BAB9;
+    color:#fff;
+  }
+}
+
+.simple-link{
+  color:#54BAB9;
+  font-size: 16px;
+  text-decoration: underline;
+  font-weight: 600;
+  &:hover {
+    color:#54BAB9;
+  }
+
+  &-delete {
+    color:#54bab8a1;
+    font-size: 16px;
+    text-decoration: underline;
+    font-weight: 400;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+  }
+}
