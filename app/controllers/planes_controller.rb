@@ -1,5 +1,5 @@
 class PlanesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: [ :home, :show]
   before_action :set_planes, only: [ :show, :edit, :update, :destroy, :deactivate ]
 
   def index
@@ -7,6 +7,9 @@ class PlanesController < ApplicationController
   end
 
   def show
+    if @plane.availability == false
+      redirect_to root_path
+    end
     authorize @plane
   end
 

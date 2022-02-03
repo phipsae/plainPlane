@@ -1,4 +1,7 @@
 
+
+<%= link_to "Go to my profile", bookings_path %>
+
 <% if policy(Plane).new? %>
   <div class="btn btn-danger">
     <%= link_to "create plane", new_plane_path %>
