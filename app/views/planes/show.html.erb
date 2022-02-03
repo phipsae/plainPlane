@@ -10,5 +10,16 @@
     <%= f.submit "Delete", class: 'btn btn-danger' %>
   <% end %>
 <% end %>
-
 <%= link_to 'Edit', edit_plane_path(@plane) %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <%= simple_form_for [ @plane, @booking ] do |f| %>
+        <%= f.input :status, as: :hidden, input_html: { value: "pending" } %>
+        <%= f.input :start_date, as: :date, html5: true %>
+        <%= f.input :end_date, as: :date, html5: true %>
+        <%= f.submit "Book", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

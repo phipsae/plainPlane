@@ -1,12 +1,14 @@
 class PlanesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
-  before_action :set_planes, only: [ :show, :edit, :update, :destroy, :deactivate ]
+  before_action :set_planes, only: [ :show, :edit, :update ]
 
   def index
     @planes = Plane.all
   end
 
-  def show; end
+  def show
+    @booking = Booking.new(plane: @plane)
+  end
 
   def new
     @plane = Plane.new
