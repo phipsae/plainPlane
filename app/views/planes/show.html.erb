@@ -1,16 +1,31 @@
+<h1> This is a plane <%= @plane.name %> </h1>
+
+<div class="btn btn-primary" type="button"><%= link_to "go back to planes", root_path %></div>
+<br>
+<% if @plane.photo.attached? %>
+  <%= cl_image_tag @plane.photo.key, height: 300, width: 400, crop: :fill %>
+<% else %>
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+<% end %>
+
 <p><%= @plane.name %></p>
 <p><%= @plane.user.user_name %></p>
 <p><%= @plane.plane_model.name %></p>
 <p><%= @plane.price / 100 %></p>
 <p><%= @plane.availability%></p>
 
-<% if @plane.availability %>
-  <%= simple_form_for @plane do |f| %>
-    <%= f.input :availability, as: :hidden, input_html: { value: false } %>
-    <%= f.submit "Delete", class: 'btn btn-danger' %>
+
+
+<% if policy(@plane).edit? %>
+  <% if @plane.availability %>
+    <%= simple_form_for @plane do |f| %>
+      <%= f.input :availability, as: :hidden, input_html: { value: false } %>
+      <%= f.submit "Delete", class: 'btn btn-danger' %>
+    <% end %>
   <% end %>
+  <%= link_to 'Edit', edit_plane_path(@plane) %>
 <% end %>
-<%= link_to 'Edit', edit_plane_path(@plane) %>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-6">

@@ -1,7 +1,9 @@
 class BookingsController < ApplicationController
   before_action :set_plane
-
-  def index; end
+  def index
+    @bookings = policy_scope(Booking) # current_user.bookings policy_scope(Booking)
+    @user_planes = current_user.planes
+  end
 
   def show; end
 
