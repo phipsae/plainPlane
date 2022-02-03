@@ -1,0 +1,14 @@
+<p><%= @plane.name %></p>
+<p><%= @plane.user.user_name %></p>
+<p><%= @plane.plane_model.name %></p>
+<p><%= @plane.price / 100 %></p>
+<p><%= @plane.availability%></p>
+
+<% if @plane.availability %>
+  <%= simple_form_for @plane do |f| %>
+    <%= f.input :availability, as: :hidden, input_html: { value: false } %>
+    <%= f.submit "Delete", class: 'btn btn-danger' %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Edit', edit_plane_path(@plane) %>
