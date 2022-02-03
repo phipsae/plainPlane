@@ -1,17 +1,22 @@
 class PlanesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: [ :home, :show]
   before_action :set_planes, only: [ :show, :edit, :update ]
 
   def index
-    @planes = Plane.all
+    @planes = policy_scope(Plane)
   end
 
   def show
+    if @plane.availability == false
+      redirect_to root_path
+    end
+    authorize @plane
     @booking = Booking.new(plane: @plane)
   end
 
   def new
     @plane = Plane.new
+    authorize @plane
   end
 
   def create
@@ -24,13 +29,22 @@ class PlanesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize @plane
+  end
 
   def update
+    authorize @plane
     @plane.update(plane_params)
 
-    redirect_to plane_path(@plane)
+    if @plane.availability
+      redirect_to plane_path(@plane)
+    else
+      redirect_to root_path
+    end
   end
+
+  def destroy; end
 
   private
 
@@ -39,6 +53,6 @@ class PlanesController < ApplicationController
   end
 
   def plane_params
-    params.require(:plane).permit(:name, :price, :availability, :plane_model_id)
+    params.require(:plane).permit(:name, :price, :availability, :plane_model_id, :photo)
   end
 end

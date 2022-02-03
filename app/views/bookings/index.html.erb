@@ -1,0 +1,18 @@
+<h1> Hello XXXXX </h1>
+<h3> you have the following bookings: </h3>
+<% @bookings.each do |booking| %>
+  <div> <%= booking.plane.name %> </div>
+<% end %>
+
+<h3> You've got the following requests for your planes: </h3>
+<% @user_planes.each do |user_plane| %>
+  <div> <%= user_plane.name %> </div>
+  oooo
+<% end %>
+
+<% @bookings.each do |booking| %>
+  <% if booking.plane.user == current_user %>
+    <div> <%= booking.plane.name %> akdaksdoaooooo</div>
+  <% end %>
+  aooooooo
+<% end %>
