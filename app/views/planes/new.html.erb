@@ -4,13 +4,7 @@
       <div class="bg-white rounded p-3 shadow">
       <%= current_user.email %>
         <h3>Create a plane list</h3>
-        <%= simple_form_for @plane do |f| %>
-          <%= f.input :name, placeholder: 'Enter a name' %>
-          <%= f.input :price, placeholder: 'Enter a price' %>
-          <%= f.association :plane_model, collection: PlaneModel.all.order(:name), prompt: 'Select a plane',  input_html: { class: 'select2' } %>
-          <%= f.input :availability, collection: [["Aktiv", true],["Inaktiv", false]] %>
-          <%= f.submit class: 'btn btn-flat' %>
-        <% end %>
+          <%= render "shared/form", plane: @plane %>
       </div>
     </div>
   </div>

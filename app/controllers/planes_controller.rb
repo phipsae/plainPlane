@@ -1,6 +1,6 @@
 class PlanesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
-  before_action :set_plane, only: [:show, :edit, :update, :destroy]
+  before_action :set_planes, only: [ :show, :edit, :update, :destroy, :deactivate ]
 
   def index
     @planes = policy_scope(Plane)
@@ -17,8 +17,7 @@ class PlanesController < ApplicationController
 
   def create
     @plane = Plane.new(plane_params)
-    @user = current_user
-    @plane.user = @user
+    @plane.user = current_user
     if @plane.save
       redirect_to plane_path(@plane)
     else
@@ -28,13 +27,17 @@ class PlanesController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    @plane.update(plane_params)
+
+    redirect_to plane_path(@plane)
+  end
 
   def destroy; end
 
   private
 
-  def set_plane
+  def set_planes
     @plane = Plane.find(params[:id])
   end
 
