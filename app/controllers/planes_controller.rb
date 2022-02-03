@@ -25,12 +25,19 @@ class PlanesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize @plane
+  end
 
   def update
+    authorize @plane
     @plane.update(plane_params)
 
-    redirect_to plane_path(@plane)
+    if @plane.availability
+      redirect_to plane_path(@plane)
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy; end
@@ -42,6 +49,6 @@ class PlanesController < ApplicationController
   end
 
   def plane_params
-    params.require(:plane).permit(:name, :price, :availability, :plane_model_id)
+    params.require(:plane).permit(:name, :price, :availability, :plane_model_id, :photo)
   end
 end

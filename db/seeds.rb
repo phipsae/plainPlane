@@ -1,7 +1,10 @@
 require "open-uri"
 
 ## User seeds
-10.times do
+
+User.destroy_all
+PlaneModel.destroy_all
+5.times do
   user = User.new(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, user_name: Faker::Internet.username, password: '123456', password_confirmation: '123456')
   user.save
 
@@ -9,7 +12,7 @@ require "open-uri"
 end
 
 ## Plane Models seeds
-20.times do
+10.times do
   hp = rand(1000..10_000)
   seats = rand(10..100)
   plane_model = PlaneModel.new(seats: seats, horsepower: hp, name: Faker::FunnyName.two_word_name)
@@ -19,7 +22,7 @@ end
 end
 
 ## Plane seeds
-20.times do
+10.times do
   price_cents = rand(1_000_000..1_000_000_000)
   id = rand(User.first.id..User.last.id)
   model_id = rand(PlaneModel.first.id..PlaneModel.last.id)

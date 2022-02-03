@@ -8,14 +8,17 @@
 <div class="cards">
   <% @planes.each do |plane| %>
     <div class="card-trip">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <% if plane.photo.attached? %>
+        <%= cl_image_tag plane.photo.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <% end %>
       <div class="card-trip-infos">
         <div>
           <h2><%= link_to plane.name, plane_path(plane) %></h2>
-          <p>Short description here!</p>
+          <p><%= plane.plane_model.name %></p>
         </div>
-        <h2 class="card-trip-pricing">£99.99</h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        <h2 class="card-trip-pricing"> <%= plane.price / 100 %> € per day </h2>
       </div>
     </div>
   <% end %>
