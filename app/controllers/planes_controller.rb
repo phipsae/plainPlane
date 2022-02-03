@@ -1,6 +1,6 @@
 class PlanesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :show]
-  before_action :set_planes, only: [ :show, :edit, :update, :destroy, :deactivate ]
+  before_action :set_planes, only: [ :show, :edit, :update ]
 
   def index
     @planes = policy_scope(Plane)
@@ -11,6 +11,7 @@ class PlanesController < ApplicationController
       redirect_to root_path
     end
     authorize @plane
+    @booking = Booking.new(plane: @plane)
   end
 
   def new
