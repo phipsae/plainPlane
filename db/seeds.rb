@@ -22,7 +22,7 @@ end
 end
 
 ## Plane seeds
-10.times do
+20.times do
   price_cents = rand(1_000_000..1_000_000_000)
   id = rand(User.first.id..User.last.id)
   model_id = rand(PlaneModel.first.id..PlaneModel.last.id)

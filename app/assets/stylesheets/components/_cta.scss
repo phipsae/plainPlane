@@ -27,6 +27,17 @@
     background-color: #54BAB9;
     color:#fff;
   }
+
+  &-red {
+    background-color: none;
+    border: 2px solid #ba5454;
+    color: #c71d1d;
+  }
+
+  &-red:hover {
+    background-color: #e97a89;
+    color:rgb(243, 231, 231);
+  }
 }
 
 .simple-link{
