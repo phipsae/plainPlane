@@ -5,4 +5,6 @@
   <%= f.input :availability, collection: [["Aktiv", true],["Inaktiv", false]], class: 'custom-select' %>
   <%= f.input :photo, as: :file %>
   <%= f.submit class: 'cta cta-dark' %>
+  <%= button_tag "Cancel", type: :back, class: 'cta cta-red' %>
+
 <% end %>
