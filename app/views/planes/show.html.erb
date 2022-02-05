@@ -21,7 +21,11 @@
   </div>
   <div class="row mb-5">
     <div class="col-12">
-      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @plane.photo.key %>');"></div>
+      <% if @plane.photo.attached? %>
+        <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @plane.photo.key %>');"></div>
+      <% else %>
+        <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg');"></div>
+      <% end %>
     </div>
   </div>
   <div class="row">
