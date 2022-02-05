@@ -24,7 +24,8 @@
   <div> <%= link_to user_plane.name, plane_path(user_plane) %> <%= current_user.email %> </div>
     <div>
       <% user_plane.bookings.each do |booking| %>
-        <%= booking.status %>
+        <p> Booking from <%= booking.start_date %> to <%= booking.end_date %>  </p>
+        <p> Current status: <%= booking.status %> </p>
         <%= simple_form_for(booking) do |f| %>
           <%# <%= f.input :status, as: :hidden, input_html: { status: 1 } %>
           <%= f.input :status, as: :hidden, input_html: { value: "confirmed" } %>
