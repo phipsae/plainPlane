@@ -1,8 +1,23 @@
 <h1> Hello <%= current_user.first_name %> welcome to your plane world!</h1>
 <h3> you have the following bookings: </h3>
-<% @bookings.each do |booking| %>
-  <div> <%= link_to booking.plane.name, plane_path(booking.plane) %> <%= booking.status %> <%= current_user.email %></div>
-<% end %>
+<div class="cards-small">
+  <% @bookings.each do |booking| %>
+    <div class="card-trip">
+        <% if booking.plane.photo.attached? %>
+          <%= cl_image_tag booking.plane.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to booking.plane.name, plane_path(booking.plane) %></h2>
+            <p><%= booking.status %></p>
+          </div>
+          <h2 class="card-trip-pricing"> <%= booking.plane.price / 100 %> € per day </h2>
+        </div>
+      </div>
+  <% end %>
+</div>
 
 <h3> You've got the following requests for your planes: </h3>
 <% @user_planes.each do |user_plane| %>
