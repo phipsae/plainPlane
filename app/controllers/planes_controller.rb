@@ -22,6 +22,7 @@ class PlanesController < ApplicationController
   def create
     @plane = Plane.new(plane_params)
     @plane.user = current_user
+    authorize @plane
     if @plane.save
       redirect_to plane_path(@plane)
     else
