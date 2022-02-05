@@ -32,6 +32,7 @@
           <%= f.input :start_date, as: :date, html5: true %>
           <%= f.submit "Confirm", class: "btn btn-primary" %>
         <% end %>
+        <br>
 
         <%= simple_form_for(booking) do |f| %>
           <%= f.input :status, as: :hidden, input_html: { value: "declined" } %>
