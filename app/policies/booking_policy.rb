@@ -1,7 +1,7 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all  # where(user: user) # @record.plane.user
+      scope.where(user: user) # @record.plane.user
     end
   end
 
