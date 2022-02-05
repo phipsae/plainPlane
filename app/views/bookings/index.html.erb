@@ -1,10 +1,28 @@
-<h1> Hello XXXXX </h1>
+<h1> Hello <%= current_user.first_name %> welcome to your plane world!</h1>
 <h3> you have the following bookings: </h3>
 <% @bookings.each do |booking| %>
-  <div> <%= booking.plane.name %> <%= current_user.email %></div>
+  <div> <%= link_to booking.plane.name, plane_path(booking.plane) %> <%= booking.status %> <%= current_user.email %></div>
 <% end %>
 
 <h3> You've got the following requests for your planes: </h3>
 <% @user_planes.each do |user_plane| %>
-  <div> <%= user_plane.name %> <%= current_user.email %> </div>
+  <div> <%= link_to user_plane.name, plane_path(user_plane) %> <%= current_user.email %> </div>
+    <div>
+      <% user_plane.bookings.each do |booking| %>
+        <%= booking.status %>
+
+        <%= simple_form_for(booking) do |f| %>
+          <%# <%= f.input :status, as: :hidden, input_html: { status: 1 } %>
+          <%= f.input :status, collection: ["confirmed"] %>
+          <%= f.input :start_date, as: :date, html5: true %>
+          <%= f.submit "Confirm", class: "btn btn-primary" %>
+        <% end %>
+
+        <%= simple_form_for(booking) do |f| %>
+          <%= f.input :status, as: :hidden, input_html: { value: "declined" } %>
+          <%= f.submit "Decline", class: "btn btn-danger" %>
+        <% end %>
+        <br>
+      <% end %>
+    </div>
 <% end %>
