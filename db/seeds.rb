@@ -12,30 +12,67 @@ PlaneModel.destroy_all
 end
 
 ## Plane Models seeds
-10.times do
+10.times do |f|
+  plane_type = [
+    "Airbus A20N",
+    "Airbus A21N",
+    "Airbus A306",
+    "Hawker Beechcraft BE40",
+    "Cessna C25A",
+    "Cessna C525",
+    "Gulfstream Aerospace GLF4",
+    "Lear Jet LJ60",
+    "Boeing B788",
+    "Douglas DC87"
+  ]
   hp = rand(1000..10_000)
   seats = rand(10..100)
-  plane_model = PlaneModel.new(seats: seats, horsepower: hp, name: Faker::FunnyName.two_word_name)
+  plane_model = PlaneModel.new(seats: seats, horsepower: hp, name: plane_type[f])
   plane_model.save
 
   puts "Plane_model: #{plane_model.id}"
 end
 
 ## Plane seeds
-20.times do
+10.times do |f|
+  plane_name = [
+    "Cozy Airplane to travel with",
+    "Fastest plane on earth",
+    "Rainbow Travel Plane",
+    "Travel to the moon with my awesome plane",
+    "Travel the world",
+    "Awesome plane trip",
+    "Cheap plane but still flies",
+    "Grahams Private Jet",
+    "Philips Love Jet",
+    "Upside Down Plane"
+  ]
+
+  plane_photo = [
+    "https://contentzone.eurocontrol.int/aircraftperformance/images/acft_images_large/A20N_lufthansa_guidohaesevoets.jpg",
+    "https://contentzone.eurocontrol.int/aircraftperformance/images/acft_images_large/39621889171_6edc8fa6aa_o_17146438.jpg",
+    "https://contentzone.eurocontrol.int/aircraftperformance/images/acft_images_large/A306_dhl_guido-haesevoets.jpg",
+    "https://contentzone.eurocontrol.int/aircraftperformance/images/acft_images_large/0959487-A.jpg",
+    "https://contentzone.eurocontrol.int/aircraftperformance/images/acft_images_large/c25a-oe-fcy-climb.jpg",
+    "https://contentzone.eurocontrol.int/aircraftperformance/images/acft_images_large/CJ1-A.jpg",
+    "https://contentzone.eurocontrol.int/aircraftperformance/images/acft_images_large/0991446-A.jpg",
+    "https://contentzone.eurocontrol.int/aircraftperformance/images/acft_images_large/0997348-A.jpg",
+    "https://contentzone.eurocontrol.int/aircraftperformance/images/acft_images_large/B788_klm_guidohaesevoets.jpg",
+    "https://contentzone.eurocontrol.int/aircraftperformance/images/acft_images_large/0999176-A.jpg"
+  ]
   price_cents = rand(1_000_000..1_000_000_000)
   id = rand(User.first.id..User.last.id)
   model_id = rand(PlaneModel.first.id..PlaneModel.last.id)
   model = PlaneModel.find(model_id)
   user = User.find(id)
-  plane = Plane.new(price: price_cents, name: Faker::Hipster.sentence(word_count: 6), availability: true)
+  plane = Plane.new(price: price_cents, name: plane_name[f], availability: true)
   plane.user = user
   plane.plane_model = model
 
   plane.save
 
-  file = URI.open('https://source.unsplash.com/collection/1491223')
-  plane.photo.attach(io: file, filename: "#{plane.id}.png", content_type: 'image/png')
+  file = URI.open(plane_photo[f])
+  plane.photo.attach(io: file, filename: "#{plane.id}.jpg", content_type: 'image/jpg')
   puts "Plane #{plane.id}"
 end
 
