@@ -1,9 +1,16 @@
+.cards-small {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
 }
-
 
 .card-trip, .plane-card, .form-card {
   overflow: hidden;
