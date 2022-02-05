@@ -1,43 +1,67 @@
-<h1> Hello <%= current_user.first_name %> welcome to your plane world!</h1>
-<h3> you have the following bookings: </h3>
-<div class="cards-small">
-  <% @bookings.each do |booking| %>
-    <div class="card-trip">
-        <% if booking.plane.photo.attached? %>
-          <%= cl_image_tag booking.plane.photo.key, height: 300, width: 400, crop: :fill %>
-        <% else %>
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-        <% end %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= link_to booking.plane.name, plane_path(booking.plane) %></h2>
-            <p><%= booking.status %></p>
+<div class="container">
+  <div class="row my-5">
+  <h1>Hello <%= current_user.first_name %> welcome to your plane world!</h1>
+  </div>
+  <div class="row my-5">
+  <h2>You have the following bookings:</h2>
+  </div>
+  <div class="row my-5">
+    <div class="cards">
+      <% @bookings.each do |booking| %>
+      <%= link_to plane_path(booking.plane), class: "card-trip" do %>
+          <% if booking.plane.photo.attached? %>
+            <%= cl_image_tag booking.plane.photo.key, crop: :fill %>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <% end %>
+          <div class="card-trip-infos">
+            <div class="card-description">
+              <h3><%= booking.plane.name.truncate(27) %></h3>
+              <p><%= booking.plane.plane_model.name %></p>
+              <p><%= booking.status %></p>
+            </div>
+            <h2 class="card-trip-pricing"> <%= booking.plane.price / 100 %> € per day </h2>
           </div>
-          <h2 class="card-trip-pricing"> <%= booking.plane.price / 100 %> € per day </h2>
-        </div>
-      </div>
-  <% end %>
-</div>
-
-<h3> You've got the following requests for your planes: </h3>
-<% @user_planes.each do |user_plane| %>
-  <div> <%= link_to user_plane.name, plane_path(user_plane) %> <%= current_user.email %> </div>
-    <div>
-      <% user_plane.bookings.each do |booking| %>
-        <p> Booking from <%= booking.start_date %> to <%= booking.end_date %>  </p>
-        <p> Current status: <%= booking.status %> </p>
-        <%= simple_form_for(booking) do |f| %>
-          <%# <%= f.input :status, as: :hidden, input_html: { status: 1 } %>
-          <%= f.input :status, as: :hidden, input_html: { value: "confirmed" } %>
-          <%= f.submit "Confirm", class: "btn btn-primary" %>
-        <% end %>
-        <%= simple_form_for(booking) do |f| %>
-          <%= f.input :status, as: :hidden, input_html: { value: "declined" } %>
-          <%= f.submit "Decline", class: "btn btn-danger" %>
         <% end %>
       <% end %>
     </div>
+  </div>
+</div>
 
+<div class="container">
+  <div class="row my-5">
+    <h3> You've got the following requests for your planes: </h3>
+  </div>
+  <div class="row my-5">
+    <% @user_planes.each do |user_plane| %>
+      <% user_plane.bookings.each do |booking| %>
+        <div class="card-product">
+          <% if user_plane.photo.attached? %>
+            <%= cl_image_tag user_plane.photo.key, crop: :fill %>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <% end %>
+          <div class="card-product-infos">
+            <h2><%= link_to user_plane.name, plane_path(user_plane) %></h2>
+            <p>Booking from <strong><%= booking.start_date %></strong> to <strong><%= booking.end_date %></strong></p>
+            <div>
+              <p> Current status: <%= booking.status %> </p>
+              <div class="d-flex">
+                <%= simple_form_for(booking) do |f| %>
+                  <%# <%= f.input :status, as: :hidden, input_html: { status: 1 } %>
+                  <%= f.input :status, as: :hidden, input_html: { value: "confirmed" } %>
+                  <%= f.submit "Confirm", class: "simple-link-accept" %>
+                <% end %>
+                <%= simple_form_for(booking) do |f| %>
+                  <%= f.input :status, as: :hidden, input_html: { value: "declined" } %>
+                  <%= f.submit "Decline", class: "simple-link-decline ml-3" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
 
-
-<% end %>
+  </div>
+</div>
