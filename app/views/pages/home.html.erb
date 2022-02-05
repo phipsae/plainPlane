@@ -1,20 +1,25 @@
-
-<h2> Find the craziest plane in the world 💲💲💲✈️🛩💲💲💲</h2>
+<div class="container">
+<div class="row my-5">
+<h1> Find the craziest plane in the world 💲💲💲✈️🛩💲💲💲</h1>
+</div>
+<div class="row">
 <div class="cards">
   <% @planes.each do |plane| %>
-    <div class="card-trip">
+  <%= link_to plane_path(plane), class: "card-trip" do %>
       <% if plane.photo.attached? %>
         <%= cl_image_tag plane.photo.key, crop: :fill %>
       <% else %>
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
       <% end %>
       <div class="card-trip-infos">
-        <div>
-          <h2><%= link_to plane.plane_model.name, plane_path(plane) %></h2>
-          <p><%= plane.name %></p>
+        <div class="card-description">
+          <h3><%= plane.name.truncate(27) %></h3>
+          <p><%= plane.plane_model.name %></p>
         </div>
         <h2 class="card-trip-pricing"> <%= plane.price / 100 %> € per day </h2>
       </div>
-    </div>
+    <% end %>
   <% end %>
+</div>
+</div>
 </div>

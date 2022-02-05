@@ -2,7 +2,8 @@
   <%= f.input :name, placeholder: 'Enter a name' %>
   <%= f.input :price, placeholder: 'Enter a price' %>
   <%= f.association :plane_model, collection: PlaneModel.all.order(:name), prompt: 'Select a plane',  input_html: { class: 'select2' } %>
-  <%= f.input :availability, collection: [["Aktiv", true],["Inaktiv", false]], class: 'custom-select' %>
+  <%= f.input :description, placeholder: 'Describe your lovely plane' %>
+  <%= f.input :availability, as: :hidden, input_html: { value: true } %>
   <%= f.input :photo, as: :file %>
   <%= f.submit class: 'cta cta-dark' %>
   <%= button_tag "Cancel", type: :back, class: 'cta cta-red' %>
