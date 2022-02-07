@@ -58,6 +58,17 @@
     padding: 0;
     border: none;
   }
+
+  &-password-reset {
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 400;
+    color:#54BAB9;
+  }
+
+  &-password-reset:hover {
+    color:#54BAB9;
+  }
 }
 
 .simple-link-accept {
