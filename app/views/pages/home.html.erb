@@ -12,11 +12,13 @@
         <img src="https://res.cloudinary.com/dy5wj4h8e/image/upload/v1644058464/development/iyzm9gfvo7o9k2xupglcdcy23cwq.jpg" />
       <% end %>
       <div class="card-trip-infos">
-        <div class="card-description">
-          <h3><%= plane.name.truncate(27) %></h3>
-          <p><%= plane.plane_model.name %></p>
+        <div>
+          <h4><%= plane.name.truncate(27) %></h4>
+          <div class="card-trip-infos2">
+            <p><%= plane.plane_model.name %></p>
+            <p class="card-description"><strong><%= number_with_delimiter((plane.price / 100), options = {}) %> €</strong> / day </p>
+          </div>
         </div>
-        <p><span class="card-trip-header"><strong><%= plane.price / 100 %> €</strong> / day </p>
       </div>
     <% end %>
   <% end %>

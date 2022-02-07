@@ -5,11 +5,13 @@
   <%= f.input :description, placeholder: 'Describe your lovely plane' %>
   <%= f.input :availability, as: :hidden, input_html: { value: true } %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit class: 'cta cta-dark' %>
-  <% if  (current_page?(new_plane_path))%>
-    <%= link_to "Cancel", root_path, class: 'cta cta-red' %>
-  <% else %>
-    <%= link_to "Cancel", plane_path(plane), class: 'cta cta-red' %>
-  <% end %>
+  <div class="align-ctas">
+    <%= f.submit class: 'cta cta-dark' %>
+    <% if  (current_page?(new_plane_path))%>
+      <%= link_to "Cancel", root_path, class: 'cta cta-red' %>
+    <% else %>
+      <%= link_to "Cancel", plane_path(plane), class: 'cta cta-red' %>
+    <% end %>
+  </div>
 
 <% end %>
