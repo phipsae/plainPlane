@@ -1,6 +1,6 @@
 .cta {
   border-radius: 50px;
-  height: 56px;
+  // height: 56px;
   padding: 8px 24px;
   font-size: 16px;
   text-transform: uppercase;
@@ -12,9 +12,16 @@
     border: 2px solid #54BAB9;
   }
 
-    &-dark:hover {
+  &-dark:hover {
       background-color: transparent;
       color:#54BAB9;
+  }
+
+  &-red {
+    size: 100px;
+    background-color: none;
+    border: 2px solid #ba5454;
+    color: #c71d1d;
   }
 
   &-light {
@@ -29,9 +36,10 @@
   }
 
   &-red {
-    background-color: none;
+    padding: 8px 50px;
+    background-color: rgb(221, 35, 35);
     border: 2px solid #ba5454;
-    color: #c71d1d;
+    color: #f1ecec;
   }
 
   &-red:hover {
@@ -39,6 +47,8 @@
     color:rgb(243, 231, 231);
   }
 }
+
+
 
 .simple-link{
   color:#54BAB9;
@@ -89,4 +99,9 @@
   background-color: transparent;
   padding: 0;
   border: none;
+}
+
+.align-ctas {
+  display: flex;
+  justify-content: space-between;
 }

@@ -10,18 +10,30 @@
       <% @bookings.each do |booking| %>
       <%= link_to plane_path(booking.plane), class: "card-trip" do %>
           <% if booking.plane.photo.attached? %>
-            <%= cl_image_tag booking.plane.photo.key, crop: :fill %>
+            <div class="card-trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path booking.plane.photo.key, crop: :fill %>);" >
+                <% if booking.status == "pending" %>
+                  <div class="center grey" ><%= booking.status %></div>
+                <% elsif booking.status == "declined" || booking.status == "cancelled" %>
+                  <div class="center red" ><%= booking.status %></div>
+                <% else %>
+                  <div class="center green" ><%= booking.status %></div>
+                <% end %>
+            </div>
           <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <div class="card-trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg);" >
+                <div><%= booking.status %></div>
+            </div>
           <% end %>
           <div class="card-trip-infos">
-            <div class="card-description">
-              <h3><%= booking.plane.name.truncate(27) %></h3>
+          <div>
+            <h4><%= booking.plane.name.truncate(27) %></h4>
+            <div class="card-trip-infos2">
               <p><%= booking.plane.plane_model.name %></p>
-              <p><%= booking.status %></p>
+              <p class="card-description"><strong><%= number_with_delimiter((booking.plane.price / 100), options = {}) %> €</strong> / day </p>
             </div>
-            <h2 class="card-trip-pricing"> <%= booking.plane.price / 100 %> € per day </h2>
           </div>
+          </div>
+
         <% end %>
       <% end %>
     </div>

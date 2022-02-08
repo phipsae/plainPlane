@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save
-      redirect_to plane_path(@plane)
+      redirect_to bookings_path
     else
       render :new
     end
@@ -35,6 +35,8 @@ class BookingsController < ApplicationController
     render :index
   end
 
+
+  # { pending: 0, confirmed: 1, declined: 2, accepted: 3, cancelled: 4, paid: 5 }
   private
 
   def set_booking
