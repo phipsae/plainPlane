@@ -5,23 +5,17 @@
   <div class="row my-5">
   <h2>You have the following bookings:</h2>
   </div>
-  <div class="row my-5">
+  <div class="row my-5 justify-content-center">
     <div class="cards">
       <% @bookings.each do |booking| %>
       <%= link_to plane_path(booking.plane), class: "card-trip" do %>
           <% if booking.plane.photo.attached? %>
             <div class="card-trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path booking.plane.photo.key, crop: :fill %>);" >
-                <% if booking.status == "pending" %>
-                  <div class="center grey" ><%= booking.status %></div>
-                <% elsif booking.status == "declined" || booking.status == "cancelled" %>
-                  <div class="center red" ><%= booking.status %></div>
-                <% else %>
-                  <div class="center green" ><%= booking.status %></div>
-                <% end %>
+              <div class="center <%= booking.status %>" ><%= booking.status %></div>
             </div>
           <% else %>
             <div class="card-trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg);" >
-                <div><%= booking.status %></div>
+               <div class="center <%= booking.status %>" ><%= booking.status %></div>
             </div>
           <% end %>
           <div class="card-trip-infos">
@@ -33,7 +27,6 @@
             </div>
           </div>
           </div>
-
         <% end %>
       <% end %>
     </div>
@@ -44,21 +37,35 @@
   <div class="row my-5">
     <h3> You've got the following requests for your planes: </h3>
   </div>
-  <div class="row my-5">
+  <div class="row my-5 justify-content-center">
+  <div class="cards">
     <% @user_planes.each do |user_plane| %>
       <% user_plane.bookings.each do |booking| %>
-        <div class="card-product">
-          <% if user_plane.photo.attached? %>
-            <%= cl_image_tag user_plane.photo.key, crop: :fill %>
+        <div class="card-trip">
+        <% if booking.plane.photo.attached? %>
+          <div class="card-trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path user_plane.photo.key, crop: :fill %>);" >
+                  <div class="center <%= booking.status%>"><%= booking.status %></div>
+            </div>
           <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <div class="card-trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg);" >
+               <div class="center <%= booking.status%>"><%= booking.status %></div>
+            </div>
           <% end %>
-          <div class="card-product-infos">
-            <h2><%= link_to user_plane.name, plane_path(user_plane) %></h2>
-            <p>Booking from <strong><%= booking.start_date %></strong> to <strong><%= booking.end_date %></strong></p>
+          <div class="card-trip-infos">
+            <h4><%= link_to user_plane.name, plane_path(user_plane) %></h4>
+            <div class="d-flex justify-content-between">
             <div>
-              <p> Current status: <%= booking.status %> </p>
-              <div class="d-flex">
+            <span class="date-span">From:</span><br>
+              <strong><%= booking.start_date.strftime("%d/%m/%Y") %></strong>
+            </div>
+            <div class="border-right"></div>
+            <div>
+            <span class="date-span">To:</span><br/>
+              <strong><%= booking.end_date %></strong>
+            </div>
+            </div>
+            <div>
+              <div class="d-flex justify-content-between">
                 <%= simple_form_for(booking) do |f| %>
                   <%# <%= f.input :status, as: :hidden, input_html: { status: 1 } %>
                   <%= f.input :status, as: :hidden, input_html: { value: "confirmed" } %>
@@ -74,6 +81,6 @@
         </div>
       <% end %>
     <% end %>
-
+  </div>
   </div>
 </div>

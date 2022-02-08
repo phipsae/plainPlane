@@ -1,20 +1,20 @@
 .cta {
-  border-radius: 50px;
+  border-radius: 0px;
   // height: 56px;
   padding: 8px 24px;
   font-size: 16px;
   text-transform: uppercase;
-  color: #fff;
+  color: $material-primary-text;
   font-weight: bold;
 
   &-dark {
-    background-color: #54BAB9;
-    border: 2px solid #54BAB9;
+    background-color: $material-primary-dark;
+    border: 2px solid $material-primary-dark;
   }
 
   &-dark:hover {
       background-color: transparent;
-      color:#54BAB9;
+      color: $material-primary-dark;
   }
 
   &-red {
@@ -25,14 +25,14 @@
   }
 
   &-light {
-    background-color: none;
-    border: 2px solid #54BAB9;
-    color: #54BAB9;
+    background-color: $material-secondary;
+    border: 2px solid $material-secondary;
+    color: $material-secondary-text;
   }
 
   &-light:hover {
-    background-color: #54BAB9;
-    color:#fff;
+    background-color: $material-primary-dark;
+    color: $material-primary-text;
   }
 
   &-red {
@@ -51,18 +51,17 @@
 
 
 .simple-link{
-  color:#54BAB9;
+  color: $material-primary;
   font-size: 16px;
-  text-decoration: underline;
   font-weight: 600;
   &:hover {
-    color:#54BAB9;
+    color: $material-primary;
+    text-decoration: underline;
   }
 
   &-delete {
-    color:#54bab8a1;
+    color: $material-secondary-dark;
     font-size: 16px;
-    text-decoration: underline;
     font-weight: 400;
     background-color: transparent;
     padding: 0;
@@ -73,18 +72,17 @@
     font-size: 14px;
     text-decoration: none;
     font-weight: 400;
-    color:#54BAB9;
+    color: $material-primary;
   }
 
   &-password-reset:hover {
-    color:#54BAB9;
+    color:$material-primary;
   }
 }
 
 .simple-link-accept {
-    color:#54BAB9;
+    color:$material-primary;
     font-size: 16px;
-    text-decoration: underline;
     font-weight: 400;
     background-color: transparent;
     padding: 0;
@@ -92,9 +90,8 @@
 }
 
 .simple-link-decline {
-  color: #B8405E;
+  color: $material-secondary-dark;
   font-size: 16px;
-  text-decoration: underline;
   font-weight: 400;
   background-color: transparent;
   padding: 0;

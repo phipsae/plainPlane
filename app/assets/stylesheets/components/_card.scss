@@ -102,15 +102,15 @@
   border-radius: 10px;
   color: white;
 
-  &.red {
+  &.declined, &.cancelled {
     background-color: rgba(255, 0, 0, 0.8);
   }
 
-  &.grey{
+  &.pending{
     background-color: rgba(230, 230, 230, 0.8);
   }
 
-  &.green{
+  &.accepted, &.confirmed {
     background-color:rgba(0, 255, 0, 0.5);
   }
 }
@@ -189,4 +189,9 @@
 
 .card-product .card-product-infos {
   padding: 30px;
+}
+
+.date-span {
+  text-transform: lowercase;
+  font-weight: lighter;
 }
