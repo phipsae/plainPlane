@@ -11,9 +11,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item">
+        <li class="nav-item my-auto mr-2">
           <% if policy(Plane).new? %>
-              <%= link_to "Create offer", new_plane_path, class: "primary-text nav-link", style: "color: #ffffff; text-transform: uppercase; font-weight: 500;"  %>
+              <%= link_to "Create offer", new_plane_path, class: "primary-text nav-link hover-underline-animation-light", style: "padding:0; color: #ffffff; text-transform: uppercase; font-weight: 500;"  %>
           <% end %>
         </li>
         <li class="nav-item dropdown">
@@ -29,7 +29,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link primary-text" %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link primary-text hover-underline-animation-light", style: "padding:0; color: #ffffff; text-transform: uppercase; font-weight: 500;" %>
         </li>
       <% end %>
     </ul>

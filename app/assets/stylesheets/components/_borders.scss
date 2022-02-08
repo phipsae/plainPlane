@@ -1,4 +1,9 @@
 .light-border-bottom {
-  border-bottom: 1px solid $material-primary-dark;
+  border-bottom: 2px solid $material-primary;
+  padding: 20px 0;
+}
+
+.light-border {
+  border: 2px solid $material-primary;
   padding: 20px 0;
 }

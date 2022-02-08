@@ -39,11 +39,12 @@ h4, h5, h6 {
   color: $material-primary-light;
 }
 
-p {
+p, li {
   color: $material-primary;
   font-size: 16px;
 }
 
 label {
   color: $material-primary;
+  font-size: 12px;
 }

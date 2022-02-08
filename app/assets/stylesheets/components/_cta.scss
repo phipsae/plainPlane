@@ -13,7 +13,7 @@
   }
 
   &-dark:hover {
-      background-color: transparent;
+      background-color: $material-primary-text;
       color: $material-primary-dark;
   }
 
@@ -33,6 +33,7 @@
   &-light:hover {
     background-color: $material-primary-dark;
     color: $material-primary-text;
+    border: 2px solid $material-primary-dark;
   }
 
   &-red {
@@ -49,14 +50,19 @@
 }
 
 
-
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
 .simple-link{
   color: $material-primary;
   font-size: 16px;
   font-weight: 600;
+  text-decoration: none;
   &:hover {
     color: $material-primary;
-    text-decoration: underline;
   }
 
   &-delete {
@@ -101,4 +107,83 @@
 .align-ctas {
   display: flex;
   justify-content: space-between;
+}
+
+
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: $material-primary;
+
+  &:hover{
+    color: $material-primary;
+  }
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $material-primary;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hover-underline-animation-light {
+  display: inline-block;
+  position: relative;
+  color: $material-primary-text;
+}
+
+.hover-underline-animation-light:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $material-primary-text;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation-light:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
+.hover-underline-animation-primary {
+  display: inline-block;
+  position: relative;
+  color: $material-primary-light;
+}
+
+.hover-underline-animation-primary:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $material-primary-light;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation-primary:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
