@@ -106,25 +106,29 @@
 }
 
 
-.center {
+.tag {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 30px;
+  top: 16px;
+  right: 16px;
+  padding: 2px 8px;
   border-radius: 0px;
   color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: $headers-font;
+  font-size: 12px;
 
   &.declined, &.cancelled {
-    background-color: rgba(255, 0, 0, 0.8);
+    background-color: $material-decline;
   }
 
   &.pending{
-    background-color: rgba(230, 230, 230, 0.8);
+    background-color: $material-secondary;
+    color: $material-secondary-text;
   }
 
   &.accepted, &.confirmed {
-    background-color:rgba(0, 255, 0, 0.5);
+    background-color: $material-accept;
   }
 }
 

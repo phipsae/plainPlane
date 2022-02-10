@@ -1,27 +1,27 @@
 <div class="container">
-<div class="row mt-5 mb-1">
-<h1> Find the craziest plane in the world 💲💲💲✈️🛩💲💲💲</h1>
-</div>
-<div class="row mb-5 justify-content-center">
-<div class="cards">
-  <% @planes.each do |plane| %>
-  <%= link_to plane_path(plane), class: "card-trip" do %>
-      <% if plane.photo.attached? %>
-        <%= cl_image_tag plane.photo.key, crop: :fill %>
-      <% else %>
-        <img src="https://res.cloudinary.com/dy5wj4h8e/image/upload/v1644058464/development/iyzm9gfvo7o9k2xupglcdcy23cwq.jpg" />
-      <% end %>
-      <div class="card-trip-infos">
-        <div>
-          <h4><%= plane.name.truncate(27) %></h4>
-          <div class="card-trip-infos2">
-            <p><%= plane.plane_model.name %></p>
-            <p class="card-description"><strong><%= number_with_delimiter((plane.price / 100), options = {}) %> €</strong> / day </p>
+  <div class="row mt-5 mb-1">
+    <h1> Find the craziest plane in the world 💲💲💲✈️🛩💲💲💲</h1>
+  </div>
+  <div class="row mb-5 justify-content-center">
+    <div class="cards">
+      <% @planes.each do |plane| %>
+      <%= link_to plane_path(plane), class: "card-trip" do %>
+          <% if plane.photo.attached? %>
+            <%= cl_image_tag plane.photo.key, crop: :fill %>
+          <% else %>
+            <img src="https://res.cloudinary.com/dy5wj4h8e/image/upload/v1644058464/development/iyzm9gfvo7o9k2xupglcdcy23cwq.jpg" />
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h4><%= plane.name.truncate(27) %></h4>
+              <div class="card-trip-infos2">
+                <p><%= plane.plane_model.name %></p>
+                <p class="card-description"><strong><%= number_with_delimiter((plane.price / 100), options = {}) %> €</strong> / day </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-</div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
