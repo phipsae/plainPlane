@@ -1,8 +1,39 @@
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)), url('assets/hero.jpeg');">
+      <div class="container text-center">
+        <h1>Jets are for cool people!</h1>
+        <p class="mb-3">Change your life and rent a jet, become 007.</p>
+        <a class="cta cta-light" href="#">fly now</a>
+      </div>
+    </div>
+<section>
 <div class="container">
-  <div class="row mt-5 mb-1">
-    <h1> Find the craziest plane in the world 💲💲💲✈️🛩💲💲💲</h1>
+  <div class="row my-5 justify-content-center">
+    <div class="col-12 text-center">
+      <h2>Book your private jet today and escape your boring life.</h2>
+    </div>
   </div>
   <div class="row mb-5 justify-content-center">
+    <div class="col-12 col-lg-4 text-center">
+    <i class="fas fa-plane"></i>
+      <h3 class="mb-2">Your own jet</h3>
+      <p>Lorem ipsum</p>
+    </div>
+    <div class="col-12 col-lg-4 text-center">
+    <i class="fas fa-rainbow"></i>
+      <h3 class="mb-2">No limits</h3>
+      <p>Lorem ipsum</p>
+    </div>
+    <div class="col-12 col-lg-4 text-center">
+      <i class="fas fa-clock"></i>
+      <h3 class="mb-2">On demand</h3>
+      <p>Lorem ipsum</p>
+    </div>
+  </div>
+  </div>
+</section>
+<div class="container">
+  <div class="row mb-5 justify-content-center">
+  <div class="col-12">
     <div class="cards">
       <% @planes.each do |plane| %>
       <%= link_to plane_path(plane), class: "card-trip" do %>
@@ -23,5 +54,6 @@
         <% end %>
       <% end %>
     </div>
+  </div>
   </div>
 </div>
