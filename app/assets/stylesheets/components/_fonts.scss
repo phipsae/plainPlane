@@ -1,0 +1,50 @@
+.primary-text {
+  color: $material-primary-text;
+}
+
+.secondary-text {
+  color: $material-secondary-text;
+}
+
+h1 {
+  color: $material-primary-dark;
+  font-size: 36px;
+}
+
+h2, h3 {
+  color: $material-primary;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4{
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+h4, h5, h6 {
+  color: $material-primary-light;
+}
+
+p, li {
+  color: $material-primary;
+  font-size: 16px;
+}
+
+label {
+  color: $material-primary;
+  font-size: 12px;
+}

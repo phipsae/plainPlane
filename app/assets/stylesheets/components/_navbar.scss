@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgb(238, 243, 245);
+  background: $material-primary;
   position: fixed;
   top:0;
   width: 100%;
@@ -13,4 +13,12 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+  background-color: $material-secondary-light;
+}
+
+.dropdown-lewagon {
+  &:hover {
+    background-color: $material-primary-dark !important;
+    color: $material-primary-text !important;
+  }
 }
