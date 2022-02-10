@@ -8,6 +8,7 @@
 
 .card-description {
   text-align: right;
+  color: $material-primary-dark;
 }
 
 .cards {
@@ -18,26 +19,25 @@
 
 .card-trip, .plane-card, .form-card {
   overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: $material-secondary-light;
 }
 
  .card-trip {
     text-decoration: none;
-    color: #000;
+    color: $material-primary;
 
     &:hover {
     text-decoration: none;
-    color: #000;
+    color: $material-primary;
     }
  }
 
 .card-trip {
-  border-radius: 10px;
+  border-radius: 0px;
 }
 .plane-card, .form-card {
   padding: 24px;
-  border-radius: 10px;
+  border-radius: 0px;
   & h3 {
     font-size: 32px;
     font-weight: bold;
@@ -85,11 +85,24 @@
 
 .card-trip-infos {
   padding: 16px;
+  position: relative;
   // display: flex;
   // justify-content: space-between;
   // align-items: flex-end;
   // position: relative;
   // height: auto;
+
+  & h4 {
+    color: $material-primary-dark;
+  }
+
+  & h4 a{
+    color: $material-primary-dark;
+  }
+
+    & h4 a:hover{
+    color: $material-primary-dark;
+  }
 }
 
 
@@ -99,18 +112,18 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 0px;
   color: white;
 
-  &.red {
+  &.declined, &.cancelled {
     background-color: rgba(255, 0, 0, 0.8);
   }
 
-  &.grey{
+  &.pending{
     background-color: rgba(230, 230, 230, 0.8);
   }
 
-  &.green{
+  &.accepted, &.confirmed {
     background-color:rgba(0, 255, 0, 0.5);
   }
 }
@@ -155,15 +168,15 @@
 .card-product {
   overflow: hidden;
   height: 200px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: $material-secondary-light;
   display: flex;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 0px;
   flex-grow:1;
 
   & a {
-    color:#54BAB9;
+    color: $material-primary-dark;
+
   }
 
   & h2 {
@@ -189,4 +202,24 @@
 
 .card-product .card-product-infos {
   padding: 30px;
+}
+
+.date-span {
+  text-transform: lowercase;
+  font-weight: lighter;
+}
+
+.m-card-negative-cta-left{
+  margin-left: -16px;
+  margin-bottom: -16px;
+}
+
+.m-card-negative-cta-right{
+  margin-right: -16px;
+  margin-bottom: -16px;
+}
+.m-card-negative-cta{
+  margin-right: -16px;
+  margin-bottom: -16px;
+  margin-left: -16px;
 }

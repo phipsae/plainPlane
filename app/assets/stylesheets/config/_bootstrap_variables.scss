@@ -6,7 +6,7 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 $light-gray;
+$body-bg:                 #eeeeee;
 $font-size-base: 1rem;
 
 // Colors
@@ -23,3 +23,16 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+
+//material-io Colors
+
+$material-primary: #546e7a;
+$material-primary-light: #819ca9;
+$material-primary-dark: #29434e;
+
+$material-secondary: #eeeeee;
+$material-secondary-light: #ffffff;
+$material-secondary-dark: #bcbcbc;
+
+$material-primary-text: #ffffff;
+$material-secondary-text: #000000;

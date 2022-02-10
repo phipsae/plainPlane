@@ -1,20 +1,20 @@
 .cta {
-  border-radius: 50px;
+  border-radius: 0px;
   // height: 56px;
   padding: 8px 24px;
   font-size: 16px;
   text-transform: uppercase;
-  color: #fff;
+  color: $material-primary-text;
   font-weight: bold;
 
   &-dark {
-    background-color: #54BAB9;
-    border: 2px solid #54BAB9;
+    background-color: $material-primary-dark;
+    border: 2px solid $material-primary-dark;
   }
 
   &-dark:hover {
-      background-color: transparent;
-      color:#54BAB9;
+      background-color: $material-primary-text;
+      color: $material-primary-dark;
   }
 
   &-red {
@@ -25,14 +25,15 @@
   }
 
   &-light {
-    background-color: none;
-    border: 2px solid #54BAB9;
-    color: #54BAB9;
+    background-color: $material-secondary;
+    border: 2px solid $material-secondary;
+    color: $material-secondary-text;
   }
 
   &-light:hover {
-    background-color: #54BAB9;
-    color:#fff;
+    background-color: $material-primary-dark;
+    color: $material-primary-text;
+    border: 2px solid $material-primary-dark;
   }
 
   &-red {
@@ -49,20 +50,24 @@
 }
 
 
-
-.simple-link{
-  color:#54BAB9;
-  font-size: 16px;
-  text-decoration: underline;
-  font-weight: 600;
+a {
+  text-decoration: none;
   &:hover {
-    color:#54BAB9;
+    text-decoration: none;
+  }
+}
+.simple-link{
+  color: $material-primary;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  &:hover {
+    color: $material-primary;
   }
 
   &-delete {
-    color:#54bab8a1;
+    color: $material-secondary-dark;
     font-size: 16px;
-    text-decoration: underline;
     font-weight: 400;
     background-color: transparent;
     padding: 0;
@@ -73,18 +78,17 @@
     font-size: 14px;
     text-decoration: none;
     font-weight: 400;
-    color:#54BAB9;
+    color: $material-primary;
   }
 
   &-password-reset:hover {
-    color:#54BAB9;
+    color:$material-primary;
   }
 }
 
 .simple-link-accept {
-    color:#54BAB9;
+    color:$material-primary;
     font-size: 16px;
-    text-decoration: underline;
     font-weight: 400;
     background-color: transparent;
     padding: 0;
@@ -92,9 +96,8 @@
 }
 
 .simple-link-decline {
-  color: #B8405E;
+  color: $material-secondary-dark;
   font-size: 16px;
-  text-decoration: underline;
   font-weight: 400;
   background-color: transparent;
   padding: 0;
@@ -104,4 +107,83 @@
 .align-ctas {
   display: flex;
   justify-content: space-between;
+}
+
+
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: $material-primary;
+
+  &:hover{
+    color: $material-primary;
+  }
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $material-primary;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hover-underline-animation-light {
+  display: inline-block;
+  position: relative;
+  color: $material-primary-text;
+}
+
+.hover-underline-animation-light:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $material-primary-text;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation-light:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
+.hover-underline-animation-primary {
+  display: inline-block;
+  position: relative;
+  color: $material-primary-light;
+}
+
+.hover-underline-animation-primary:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: $material-primary-light;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation-primary:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
