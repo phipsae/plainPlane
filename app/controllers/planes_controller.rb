@@ -24,7 +24,7 @@ class PlanesController < ApplicationController
     @plane.user = current_user
     authorize @plane
     if @plane.save
-      redirect_to plane_path(@plane)
+      redirect_to plane_url(@plane), alert: "Watch it, mister!"
     else
       render :new
     end

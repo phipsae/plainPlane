@@ -7,7 +7,7 @@
   <%= f.input :photo, as: :file %>
   <div class="align-ctas">
     <%= f.submit class: 'cta cta-dark' %>
-    <% if  (current_page?(new_plane_path))%>
+    <% if (current_page?(new_plane_path))%>
       <%= link_to "Cancel", root_path, class: 'hover-underline-animation my-auto' %>
     <% else %>
       <%= link_to "Cancel", plane_path(plane), class: 'hover-underline-animation my-auto' %>
