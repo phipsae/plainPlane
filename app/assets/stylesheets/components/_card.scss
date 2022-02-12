@@ -10,6 +10,10 @@
   text-align: right;
   color: $material-primary-dark;
 }
+.card-description2 {
+
+  color: $material-primary-dark;
+}
 
 .cards {
   display: grid;
@@ -30,6 +34,7 @@
     text-decoration: none;
     color: $material-primary;
     }
+
  }
 
 .card-trip {
@@ -48,11 +53,27 @@
   }
 }
 
-.card-trip > img {
+.card-trip > .img-wrapper {
   height: 200px;
   width: 100%;
-  object-fit: cover;
+  overflow: hidden;      /* hide the overflow */
+  transition: .4s;
+  & img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+  }
 }
+
+.card-trip:hover {
+  & > .img-wrapper {
+    transform: scale(120%);
+  }
+ & .card-trip-banner-img {
+  transform: scale(120%);
+ }
+}
+
 
 .card-trip-banner {
   position: relative;
@@ -60,8 +81,19 @@
   width: 100%;
   background-size: cover;
   background-position: center;
+
+  & .card-trip-banner-img {
+    transition: .4s;
+  }
 }
 
+.card-trip-banner-img {
+  position: relative;
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
 .card-trip-header {
   font-size: 24px;
   font-weight: bold;
@@ -70,7 +102,7 @@
 
 
 .card-trip p {
-  font-size: 12px;
+  font-size: 16px;
   opacity: .7;
   margin: 0;
 }
@@ -81,11 +113,14 @@
   align-items: flex-end;
   position: relative;
   height: auto;
+  padding-top:12px;
 }
 
 .card-trip-infos {
   padding: 16px;
   position: relative;
+  z-index: 5;
+  background-color: $material-secondary-light;
   // display: flex;
   // justify-content: space-between;
   // align-items: flex-end;

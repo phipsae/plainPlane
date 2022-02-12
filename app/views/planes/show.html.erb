@@ -22,9 +22,9 @@
   <div class="row mb-5">
     <div class="col-12">
     <% if @plane.photo.attached? %>
-      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @plane.photo.key %>');"></div>
+      <div class="banner" style="background-image:  url('<%= cl_image_path @plane.photo.key %>');"></div>
     <% else %>
-      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://res.cloudinary.com/dy5wj4h8e/image/upload/v1644058464/development/iyzm9gfvo7o9k2xupglcdcy23cwq.jpg');"></div>
+      <div class="banner" style="background-image:  url('https://res.cloudinary.com/dy5wj4h8e/image/upload/v1644058464/development/iyzm9gfvo7o9k2xupglcdcy23cwq.jpg');"></div>
     <% end %>
     </div>
   </div>

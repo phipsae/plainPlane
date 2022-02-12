@@ -1,32 +1,32 @@
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)), url('assets/hero.jpeg');">
+    <div class="banner" style="background-image: linear-gradient(rgba(41, 67, 78, 0.25), rgba(41, 67, 78, 1)), url('assets/hero.jpeg');">
       <div class="container text-center">
         <h1>Jets are for cool people!</h1>
         <p class="mb-3">Change your life and rent a jet, become 007.</p>
         <a class="cta cta-light" href="#plane-overview">fly now</a>
       </div>
     </div>
-<section class="dark py-5">
+<section class="dark py-5 margin-top-negative-section">
 <div class="container">
   <div class="row my-5 justify-content-center">
     <div class="col-6 text-center">
-      <h2 class="text-light">Book your private jet today and escape your boring life.</h2>
+      <h2 class="primary-text">Book your private jet today and escape your boring life.</h2>
     </div>
   </div>
   <div class="row mb-5 justify-content-around">
     <div class="col-8 col-lg-3 text-center mb-5 mb-lg-0">
     <i class="fas fa-plane fa-3x text-light"></i>
-      <h3 class="pb-2 pt-4 text-light">Your own jet</h3>
-      <p class="text-light">You hate travelling like everyone else? Start to do it like the cool ones, with your own plane.</p>
+      <h3 class="pb-2 pt-4 primary-text">Your own jet</h3>
+      <p class="primary-text">You hate travelling like everyone else? Start to do it like the cool ones, with your own plane.</p>
     </div>
     <div class="col-8 col-lg-3 text-center mb-5 mb-lg-0">
     <i class="fas fa-rainbow fa-3x text-light"></i>
-      <h3 class="pb-2 pt-4 text-light">No limits</h3>
-      <p class="text-light">You don't want to stick to normal standards? Book your own plane and decide the destinations as you want.</p>
+      <h3 class="pb-2 pt-4 primary-text">No limits</h3>
+      <p class="primary-text">You don't want to stick to normal standards? Book your own plane and decide the destinations as you want.</p>
     </div>
     <div class="col-8 col-lg-3 text-center mb-5 mb-lg-0">
       <i class="fas fa-clock fa-3x text-light"></i>
-      <h3 class="pb-2 pt-4 text-light">On demand</h3>
-      <p class="text-light">Find the perfect plane for you and book it now for tomorrow. Fasten your seatbelt and enjoy your trip.</p>
+      <h3 class="pb-2 pt-4 primary-text">On demand</h3>
+      <p class="primary-text">Find the perfect plane for you and book it now for tomorrow. Fasten your seatbelt and enjoy your trip.</p>
     </div>
   </div>
   </div>
@@ -43,11 +43,13 @@
     <div class="cards">
       <% @planes.each do |plane| %>
       <%= link_to plane_path(plane), class: "card-trip" do %>
-          <% if plane.photo.attached? %>
-            <%= cl_image_tag plane.photo.key, crop: :fill %>
-          <% else %>
-            <img src="https://res.cloudinary.com/dy5wj4h8e/image/upload/v1644058464/development/iyzm9gfvo7o9k2xupglcdcy23cwq.jpg" />
-          <% end %>
+          <div class="img-wrapper">
+            <% if plane.photo.attached? %>
+              <%= cl_image_tag plane.photo.key, crop: :fill %>
+            <% else %>
+              <img src="https://res.cloudinary.com/dy5wj4h8e/image/upload/v1644058464/development/iyzm9gfvo7o9k2xupglcdcy23cwq.jpg" />
+            <% end %>
+          </div>
           <div class="card-trip-infos">
             <div>
               <h4><%= plane.name.truncate(27) %></h4>

@@ -20,7 +20,7 @@
         <% if current_user.photo.attached? %>
           <%= cl_image_tag current_user.photo.key,  gravity: :faces, height: 40, width: 40 , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
-          <%= cl_image_tag "n3whfruexbz0t3n5ru41hoevqakd.jpg",  gravity: :faces, height: 40, width: 40 , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= cl_image_tag "Avatar-PNG-Image_lifnyu.png",  gravity: :faces, height: 40, width: 40 , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "My Bookings", bookings_path, class: "dropdown-lewagon dropdown-item" %>
