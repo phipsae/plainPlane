@@ -1,3 +1,4 @@
+<section class="pt-5">
 <div class="container">
   <div class="row mt-5 mb-1">
   <div class="col-12">
@@ -6,7 +7,7 @@
   </div>
   <div class="row my-5">
   <div class="col-12">
-      <h2>You have the following bookings:</h2>
+      <h2>Your bookings</h2>
   </div>
   </div>
   <div class="row my-5 justify-content-center">
@@ -15,11 +16,15 @@
       <% @sorted_bookings.each do |booking| %>
       <%= link_to plane_path(booking.plane), class: "card-trip" do %>
           <% if booking.plane.photo.attached? %>
-            <div class="card-trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path booking.plane.photo.key, crop: :fill %>);" >
+            <div class="card-trip-banner">
+            <div class="card-trip-banner-img" style="background-image: linear-gradient(rgba(41, 67, 78, 0.05), rgba(41, 67, 78, 0.65)), url(<%= cl_image_path booking.plane.photo.key, crop: :fill %>);">
+            </div>
               <div class="tag <%= booking.status %>" ><%= booking.status %></div>
             </div>
           <% else %>
-            <div class="card-trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg);" >
+            <div class="card-trip-banner">
+            <div class="card-trip-banner-img" style="background-image: linear-gradient(rgba(41, 67, 78, 0.05), rgba(41, 67, 78, 0.65)), url(https://res.cloudinary.com/dy5wj4h8e/image/upload/v1644058464/development/iyzm9gfvo7o9k2xupglcdcy23cwq.jpg);">
+            </div>
                <div class="tag <%= booking.status %>" ><%= booking.status %></div>
             </div>
           <% end %>
@@ -27,16 +32,9 @@
           <div>
             <h4><%= booking.plane.name.truncate(27) %></h4>
             <p><%= booking.plane.plane_model.name %></p>
-            <div class="d-flex justify-content-between mb-2">
-              <div>
-              <span class="date-span">From:</span><br>
-                <p class="card-description"><strong><%= booking.start_date.strftime("%d/%m/%Y")%></strong></p>
-              </div>
-            <div class="border-right"></div>
-              <div>
-              <span class="date-span">To:</span><br/>
-                <p class="card-description"><strong><%= booking.end_date.strftime("%d/%m/%Y")%></strong></p>
-              </div>
+            <div class="card-trip-infos2">
+              <p class="card-description2"><span class="date-span">From</span><br/><strong><%= booking.start_date.strftime("%d.%m.%Y")%></strong></p>
+              <p class="card-description2"><span class="date-span">To</span><br/><strong><%= booking.end_date.strftime("%d.%m.%Y")%></strong></p>
             </div>
             <div class="card-trip-infos2">
               <p class="card-description"><strong>Overall: <%=  number_with_delimiter((((booking.end_date - booking.start_date).to_i + 1) * (booking.plane.price / 100)), options = {}) %> €</strong></p>
@@ -50,11 +48,12 @@
   </div>
   </div>
 </div>
-
+</section>
+<section class="py-5">
 <div class="container">
   <div class="row my-5">
     <div class="col-12">
-    <h3> You've got the following requests for your planes: </h3>
+    <h3>Your requests</h3>
     </div>
   </div>
   <div class="row my-5 justify-content-center">
@@ -62,44 +61,43 @@
 
   <div class="cards">
     <% @user_planes.each do |user_plane| %>
-      <% user_plane.bookings.each do |booking| %>
+      <% user_plane.bookings.order(:status).each do |booking| %>
         <div class="card-trip">
         <% if booking.plane.photo.attached? %>
-          <div class="card-trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path user_plane.photo.key, crop: :fill %>);" >
-                  <div class="tag <%= booking.status%>"><%= booking.status %></div>
+          <div class="card-trip-banner">
+            <div class="card-trip-banner-img" style="background-image: linear-gradient(rgba(41, 67, 78, 0.05), rgba(41, 67, 78, 0.65)), url(<%= cl_image_path user_plane.photo.key, crop: :fill %>);">
             </div>
+            <div class="tag <%= booking.status%>"><%= booking.status %></div>
+          </div>
           <% else %>
-            <div class="card-trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg);" >
-               <div class="tag <%= booking.status%>"><%= booking.status %></div>
+            <div class="card-trip-banner">
+            <div class="card-trip-banner-img" style="background-image: linear-gradient(rgba(41, 67, 78, 0.05), rgba(41, 67, 78, 0.65)), url(https://res.cloudinary.com/dy5wj4h8e/image/upload/v1644058464/development/iyzm9gfvo7o9k2xupglcdcy23cwq.jpg);">
             </div>
+            <div class="tag <%= booking.status%>"><%= booking.status %></div>
+          </div>
           <% end %>
           <div class="card-trip-infos">
             <h4><%= link_to user_plane.name, plane_path(user_plane) %></h4>
-            <div class="d-flex justify-content-between">
-              <div>
-              <span class="date-span">From:</span><br>
-                <strong><%= booking.start_date.strftime("%d/%m/%Y") %></strong>
-              </div>
-            <div class="border-right"></div>
-              <div>
-              <span class="date-span">To:</span><br/>
-                <strong><%= booking.end_date.strftime("%d/%m/%Y")%></strong>
-              </div>
+            <p><%= booking.plane.plane_model.name %></p>
+            <div class="card-trip-infos2">
+              <p class="card-description2"><span class="date-span">From</span><br/><strong><%= booking.start_date.strftime("%d.%m.%Y")%></strong></p>
+              <p class="card-description2"><span class="date-span">To</span><br/><strong><%= booking.end_date.strftime("%d.%m.%Y")%></strong></p>
             </div>
             <div class="card-trip-infos2">
               <p class="card-description"><strong>Total earnings: <%=  number_with_delimiter((((booking.end_date - booking.start_date).to_i + 1) * (booking.plane.price / 100)), options = {}) %> €</strong></p>
               <p class="card-description"><strong><%=  number_with_delimiter((booking.plane.price / 100), options = {}) %> €</strong> / day</p>
-            </div>            <div>
+            </div>
+            <div>
               <% if booking.status == "pending" %>
               <div class="d-flex m-card-negative-cta">
-                <%= simple_form_for(booking) do |f| %>
+                <%= simple_form_for booking , html: { class: "w-50"} do |f| %>
                   <%# <%= f.input :status, as: :hidden, input_html: { status: 1 } %>
                   <%= f.input :status, as: :hidden, input_html: { value: "confirmed" } %>
-                  <%= f.submit "Confirm", class: "cta cta-dark" %>
+                  <%= f.submit "Confirm", class: "cta cta-dark w-100" %>
                 <% end %>
-                <%= simple_form_for(booking) do |f| %>
+                <%= simple_form_for booking , html: { class: "w-50"} do |f| %>
                   <%= f.input :status, as: :hidden, input_html: { value: "declined" } %>
-                  <%= f.submit "Decline", class: "cta cta-light" %>
+                  <%= f.submit "Decline", class: "cta cta-light w-100" %>
                 <% end %>
               </div>
               <% end %>
@@ -112,3 +110,4 @@
   </div>
   </div>
 </div>
+</section>
